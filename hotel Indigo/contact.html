@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="indigo line Hotel offers clean, comfortable and affordable rooms with friendly service."
+    />
+    <title>Contact Us | indigo line Hotel</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span>📍 Main Road, Hitech City, India</span
+        ><span
+          >☎ +91 77998 18118&nbsp; | &nbsp; ✉ hotelindigolines@gmail.com</span
+        >
+      </div>
+    </div>
+    <header>
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">indigo line Hotel<span></span></a>
+        <button
+          class="menu-btn"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav>
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="rooms.html">Rooms</a
+          ><a href="contact.html" class="active">Contact</a>
+        </nav>
+        <a class="btn" href="contact.html">Book Your Stay</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container page-title">
+          <div class="eyebrow">We are here to help</div>
+          <h1>Contact & Booking</h1>
+          <p>Have a question or planning a stay? Send us an enquiry.</p>
+          <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="contact-grid">
+            <aside class="info-panel">
+              <h2>Get in touch</h2>
+              <p>
+                Our team will be happy to help with room details, rates and
+                booking enquiries.
+              </p>
+              <div class="info-item">
+                <strong>Address</strong>Main Road, Hitech City, India - 110001
+              </div>
+              <div class="info-item"><strong>Phone</strong>+91 98765 43210</div>
+              <div class="info-item">
+                <strong>Email</strong>hotelindigolines@gmail.com
+              </div>
+              <div class="info-item">
+                <strong>Reception</strong>Open daily, 7:00 AM – 11:00 PM
+              </div>
+            </aside>
+<form class="contact-form" data-booking-form novalidate>
+  <h2 style="font-family: 'Playfair Display', serif; color: var(--green-dark); margin-top: 0;">
+    Book your stay
+  </h2>
+  <div class="form-grid">
+    <div class="field">
+      <label for="name">Your name *</label>
+      <input id="name" name="name" placeholder="Full name" required />
+    </div>
+    <div class="field">
+      <label for="phone">Phone number *</label>
+      <input id="phone" name="phone" type="tel" placeholder="+91" required />
+    </div>
+    <div class="field full">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" />
+    </div>
+ 
+    <div class="field">
+      <label for="checkin">Check-in date *</label>
+      <input id="checkin" name="checkin" type="date" required />
+    </div>
+    <div class="field">
+      <label for="checkout">Check-out date *</label>
+      <input id="checkout" name="checkout" type="date" required />
+    </div>
+ 
+    <div class="field">
+      <label for="room">Room type</label>
+      <select id="room" name="room">
+        <option value="Standard Room">Standard Room – ₹1,499 / night</option>
+        <option value="Deluxe Room">Deluxe Room – ₹1,999 / night</option>
+        <option value="Family Room">Family Room – ₹2,499 / night</option>
+      </select>
+    </div>
+ 
+      <div class="field">
+        <label for="rooms">Rooms</label>
+        <select id="rooms" name="rooms">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="adults">Adults</label>
+        <select id="adults" name="adults">
+          <option value="1">1</option><option value="2" selected>2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="children">Children</label>
+        <select id="children" name="children">
+          <option value="0" selected>0</option><option value="1">1</option>
+          <option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+ 
+    <div class="field full">
+      <label for="message">Special requests</label>
+      <textarea id="message" name="message" placeholder="Arrival time, extra bed, breakfast, airport pickup..."></textarea>
+    </div>
+ 
+    <div class="field full">
+      <div class="booking-summary" aria-live="polite"></div>
+      <div style="position:absolute;left:-9999px" aria-hidden="true">
+  <input name="website" tabindex="-1" autocomplete="off" />
+</div>
+      <button class="btn" type="submit">Send Booking Enquiry</button>
+      <div class="notice"></div>
+    </div>
+  </div>
+</form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="cta">
+      <div class="container">
+        <h2>A comfortable stay, at the right price.</h2>
+        <p>Plan your next visit with indigo line Hotel.</p>
+        <a class="btn" href="contact.html">Contact Us</a>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">indigo line Hotel</div>
+            <p>
+              Simple comfort, warm hospitality and great value. Your friendly
+              place to stay while exploring the city.
+            </p>
+          </div>
+          <div>
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="index.html">Home</a><a href="about.html">About Us</a
+              ><a href="rooms.html">Rooms & Rates</a
+              ><a href="contact.html">Contact</a>
+            </div>
+          </div>
+          <div>
+            <h3>Get in Touch</h3>
+            <p>Main Road, Hitech City, India</p>
+            <p>+91 98765 43210</p>
+            <p>hotelindigolines@gmail.com</p>
+          </div>
+        </div>
+        <div class="copyright">
+          © <span data-year></span> indigo line Hotel. 
+        </div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>

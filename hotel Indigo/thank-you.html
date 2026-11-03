@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Thank You | indigo line Hotel</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span>📍 Main Road, Hitech City, India</span
+        ><span
+          >☎ +91 77998 18118&nbsp; | &nbsp; ✉ hotelindigolines@gmail.com</span
+        >
+      </div>
+    </div>
+    <header>
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">
+          <!-- <img src="images/hotel_logo.png" alt="indigo line Hotel logo" class="brand-logo" /> -->
+          <span class="brand-text">indigo line<span>.</span></span>
+        </a>
+        <button
+          class="menu-btn"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav>
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="rooms.html">Rooms</a><a href="contact.html">Contact</a>
+        </nav>
+        <a class="btn" href="contact.html">Book Your Stay</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container page-title">
+          <div class="eyebrow">Enquiry received</div>
+          <h1>Thank you!</h1>
+          <p>We have received your booking enquiry.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container thanks-grid">
+          <!-- Left: confirmation + booking summary -->
+          <div class="thanks-card">
+            <div class="tick">✓</div>
+            <h2>Thank you, <span id="t-name">guest</span>!</h2>
+            <p class="muted">
+              Our team will contact you shortly on your phone or WhatsApp to
+              confirm availability. To secure your room, you can pay the advance
+              using the QR code.
+            </p>
+            <ul class="summary-list" id="t-summary" hidden></ul>
+            <p style="margin-top: 24px">
+              <a class="btn" href="index.html">Back to Home</a>
+            </p>
+          </div>
+
+          <!-- Right: payment -->
+          <div class="pay-card">
+            <h2>Pay to confirm your stay</h2>
+            <p class="muted" style="margin: 0">
+              Scan with any UPI app (GPay, PhonePe, Paytm, BHIM)
+            </p>
+
+            <div class="qr-box">
+              <img id="qr" src="images/payment-qr.png" alt="Payment QR code" />
+            </div>
+
+            <div class="upi-row">
+              <span class="upi-id" id="upi-id"></span>
+              <button class="btn btn-outline" type="button" id="copy-upi">
+                Copy UPI ID
+              </button>
+            </div>
+
+            <div id="advance-line" class="upi-row" hidden>
+              <span>Advance to pay: <strong id="advance-amt"></strong></span>
+            </div>
+
+            <div class="pay-actions">
+              <a class="btn" id="upi-link" href="#" hidden>Pay with UPI app</a>
+              <a class="btn btn-outline" id="wa-proof" href="#" target="_blank" rel="noopener"
+                >Send payment screenshot on WhatsApp</a
+              >
+            </div>
+
+            <p class="pay-note">
+              Your booking is confirmed only after the hotel verifies the
+              payment and confirms availability. Please send the payment
+              screenshot on WhatsApp so we can confirm quickly.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">indigo line Hotel</div>
+            <p>
+              Simple comfort, warm hospitality and great value. Your friendly
+              place to stay while exploring the city.
+            </p>
+          </div>
+          <div>
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="index.html">Home</a><a href="about.html">About Us</a
+              ><a href="rooms.html">Rooms & Rates</a
+              ><a href="contact.html">Contact</a>
+            </div>
+          </div>
+          <div>
+            <h3>Get in Touch</h3>
+            <p>Main Road, Hitech City, India</p>
+            <p>+91 77998 18118</p>
+            <p>hotelindigolines@gmail.com</p>
+          </div>
+        </div>
+        <div class="copyright">
+          © <span data-year></span> indigo line Hotel. Demo website template.
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+      /* ---------- PAYMENT SETTINGS (edit these) ---------- */
+      const UPI_ID = "Q043584878@ybl"; // <-- your real UPI ID
+      const PAYEE_NAME = "indigo line Hotel";
+      const ADVANCE_PERCENT = 0; // e.g. 30 = 30% advance. 0 = don't show an amount
+
+      /* ---------- Page logic ---------- */
+      (function () {
+        var b = null;
+        try { b = JSON.parse(sessionStorage.getItem("lastBooking")); } catch (e) {}
+
+        document.getElementById("upi-id").textContent = UPI_ID;
+
+        // QR image fallback if the file is missing
+        var qr = document.getElementById("qr");
+        function qrMissing() {
+          var box = qr.parentNode;
+          box.innerHTML =
+            '<div class="qr-placeholder">Add your QR image at<br>images/payment-qr.png</div>';
+        }
+        qr.addEventListener("error", qrMissing);
+        if (qr.complete && qr.naturalWidth === 0) qrMissing();
+
+        // Copy UPI ID
+        document.getElementById("copy-upi").addEventListener("click", function () {
+          var btn = this;
+          function done() {
+            btn.textContent = "Copied ✓";
+            setTimeout(function () { btn.textContent = "Copy UPI ID"; }, 2000);
+          }
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(UPI_ID).then(done, done);
+          } else {
+            var t = document.createElement("textarea");
+            t.value = UPI_ID; document.body.appendChild(t); t.select();
+            try { document.execCommand("copy"); } catch (e) {}
+            document.body.removeChild(t); done();
+          }
+        });
+
+        // Booking summary + amounts
+        var advance = 0;
+        var msg = "Hello, I have made the payment for my booking enquiry.";
+        if (b) {
+          document.getElementById("t-name").textContent = b.name || "guest";
+          var list = document.getElementById("t-summary");
+          var rows = [
+            ["Room", b.room + " × " + b.rooms],
+            ["Check-in", prettyDate(b.checkin)],
+            ["Check-out", prettyDate(b.checkout)],
+            ["Nights", String(b.nights)],
+            ["Estimated total", money(b.total)],
+          ];
+          rows.forEach(function (r) {
+            var li = document.createElement("li");
+            var k = document.createElement("span"); k.textContent = r[0];
+            var v = document.createElement("strong"); v.textContent = r[1];
+            li.appendChild(k); li.appendChild(v); list.appendChild(li);
+          });
+          list.hidden = false;
+
+          if (ADVANCE_PERCENT > 0) {
+            advance = Math.round((b.total * ADVANCE_PERCENT) / 100);
+            document.getElementById("advance-amt").textContent =
+              money(advance) + " (" + ADVANCE_PERCENT + "% of " + money(b.total) + ")";
+            document.getElementById("advance-line").hidden = false;
+          }
+          msg += "\nName: " + b.name + "\nPhone: " + b.phone + "\nRoom: " + b.room +
+                 " x" + b.rooms + "\nDates: " + prettyDate(b.checkin) + " to " +
+                 prettyDate(b.checkout);
+          if (advance) msg += "\nAmount paid: " + money(advance);
+        }
+
+        // WhatsApp: send payment proof
+        document.getElementById("wa-proof").href =
+          "https://wa.me/" + OWNER_WHATSAPP + "?text=" + encodeURIComponent(msg);
+
+        // UPI deep link (works on phones only)
+        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          var link = "upi://pay?pa=" + encodeURIComponent(UPI_ID) +
+                     "&pn=" + encodeURIComponent(PAYEE_NAME) + "&cu=INR" +
+                     (advance ? "&am=" + advance : "") +
+                     "&tn=" + encodeURIComponent("Hotel booking advance");
+          var a = document.getElementById("upi-link");
+          a.href = link; a.hidden = false;
+        }
+      })();
+    </script>
+  </body>
+</html>
